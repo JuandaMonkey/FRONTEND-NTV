@@ -1,0 +1,62 @@
+.search-movie {
+  width: 35px;
+  height: 35px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  background-color: #1a1a1a;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+  transition: all 0.25s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+}
+
+.search-movie i {
+  color: #bfbfbf;
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.search-movie input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #bfbfbf;
+  font-size: 18px;
+  opacity: 0;
+  width: 0;
+  transition: all 0.25s ease;
+  padding-left: 8px;
+}
+
+.search-movie:focus-within,
+.search-movie.active {
+  width: 300px;
+  border-color: #bfbfbf;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+}
+
+.search-movie:focus-within input,
+.search-movie.active input {
+  opacity: 1;
+  width: 100%;
+}
+
+.search-movie:hover {
+  border-color: #bfbfbf;
+}
+
+.search-movie:active {
+  transform: scale(1.03);
+}
+
+@media (min-width: 900px) {
+  .search-movie:focus-within,
+  .search-movie.active {
+    width: 450px;
+  }
+}

@@ -1,0 +1,9 @@
+<nav class="navbar">
+  <div class="navbar-left">
+    <app-search-bar (searchChange)="search($event)"></app-search-bar>
+  </div>
+  <div class="navbar-right">
+    <app-button label="Shorts" type="secondary" (clickBtn)="shorts()"></app-button>
+    <app-button label="Cortometrajes" type="secondary" (clickBtn)="cortos()"></app-button>
+  </div>
+</nav>

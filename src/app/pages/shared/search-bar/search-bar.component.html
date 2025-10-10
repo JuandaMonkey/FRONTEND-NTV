@@ -1,0 +1,8 @@
+<div class="search-movie" [class.active]="inputValue">
+  <i class="fa fa-search"></i>
+  <input 
+    type="text" 
+    placeholder="Buscar" 
+    [(ngModel)]="inputValue"
+    (input)="onInputChange()" />
+</div>

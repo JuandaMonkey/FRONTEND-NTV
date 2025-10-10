@@ -1,0 +1,35 @@
+:host {
+    display: block;
+    min-height: auto;
+    position: relative;
+    color: #fff;
+    font-family: Inter, system-ui, Arial;
+    overflow: hidden;
+}
+
+// fondo principal
+:host::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url("/assets/main-background.jpg") center/cover no-repeat;
+    z-index: -2;
+}
+
+// capa oscura
+:host::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: -1;
+}
+
+// filas de peliculas
+.movies-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 40px 20px;
+}
