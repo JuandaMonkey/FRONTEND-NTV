@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-short-card',
   standalone: true,
-  imports: [],
   templateUrl: './short-card.component.html',
-  styleUrl: './short-card.component.scss'
+  styleUrls: ['./short-card.component.scss']
 })
 export class ShortCardComponent {
-
+  @Input() title: string = '';
+  @Input() imageUrl: string = '';
 }

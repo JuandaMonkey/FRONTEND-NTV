@@ -1,12 +1,3 @@
-<!-- navigation bar -->
 <app-navigation-bar></app-navigation-bar>
-
-<!-- movie card -->
-<div class="movies-row">
-  <app-movie-card *ngFor="let movie of movies"
-    [title]="movie.title"
-    [imageUrl]="movie.imageUrl">
-  </app-movie-card>
-</div>
 
 <router-outlet></router-outlet>

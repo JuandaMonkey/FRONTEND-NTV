@@ -1,0 +1,142 @@
+.container-short {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    position: relative;
+    overscroll-behavior: none;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
+@supports (display: grid) {
+    .container-short {
+        display: grid;
+        grid-template-columns: 280px 350px 280px;
+        grid-template-areas: 'left center right';
+    }
+    .left-rail { grid-area: left; }
+    .short { grid-area: center; }
+    .right-rail { grid-area: right; }
+}
+
+.left-rail,
+.right-rail {
+    width: 280px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.left-rail {
+    align-items: center;
+    grid-area: left;
+}
+
+.controls {
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 250px);
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    z-index: 10;
+}
+
+.short {
+    width: 350px;
+    height: 500px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    cursor: pointer;
+    grid-area: center;
+    position: relative;
+}
+
+.right-rail {
+    justify-content: flex-start;
+    align-items: center;
+    grid-area: right;
+    margin-left: 30px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.title,
+.user,
+.desc {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: default;
+    width: 350px;
+    height: 100px;
+    max-height: 125px;
+}
+
+.title {
+    font-size: 20px;
+}
+
+.user {
+    height: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.desc {
+    height: auto;
+}
+
+@media (max-width: 900px) {
+    .container-short {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          'center'
+          'right'
+          'left';
+        gap: 24px;
+        flex-direction: column;
+    }
+
+    .controls {
+        position: static;
+        transform: none;
+        left: auto;
+        top: auto;
+        margin-top: 10px;
+    }
+
+    .short {
+        width: 100%;
+        max-width: 350px;
+        height: 500px;
+        margin: 0 auto;
+    }
+
+    .right-rail,
+    .left-rail {
+        width: 100%;
+        align-items: center;
+    }
+
+    .info {
+        width: 100%;
+        max-width: 350px;
+        margin: 0 auto;
+    }
+}

@@ -1,31 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
-// search-bar component
+// componentes
 import { SearchBarComponent } from '../search-bar/search-bar.component';
-
-// button component
+import { MyAccountComponent } from '../my-account/my-account.component';
 import { ButtonComponent } from '../components/button/button.component';
 
 @Component({
   selector: 'app-navigation-bar',
   standalone: true,
   imports: [CommonModule, 
-            SearchBarComponent, 
+            SearchBarComponent,
+            MyAccountComponent,
             ButtonComponent],
   templateUrl: './navigation-bar.component.html',
   styleUrls: ['./navigation-bar.component.scss']
 })
 export class NavigationBarComponent {
+  constructor(private router: Router) {}
+
+  @Input() fixed: boolean = false;
+
   search(value: string) {
     console.log('Buscar:', value);
   }
 
-  shorts() {
-    console.log('Shorts clickeado');
+  navigateToHome() {
+    this.router.navigate(['']);
+    console.log('Navegando para Home');
   }
 
-  cortos() {
-    console.log('Cortometrajes clickeado');
+  navigateToShorts() {
+    this.router.navigate(['short-page']);
+    console.log('Navegando para Shorts');
   }
 }

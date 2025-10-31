@@ -1,0 +1,19 @@
+<div class="container-short" tabindex="0" (keydown.arrowUp)="$event.preventDefault(); onPrev()" (keydown.arrowDown)="$event.preventDefault(); onNext()">
+    <aside class="left-rail">
+        <div class="controls">
+            <app-button type="control-up" [ariaLabel]="'Anterior'" (clickBtn)="onPrev()"></app-button>
+            <app-button type="control-down" [ariaLabel]="'Siguiente'" (clickBtn)="onNext()"></app-button>
+        </div>
+    </aside>
+
+    <main class="short" role="img" [attr.aria-label]="shorts.title" [style.backgroundImage]="'url(' + shorts.imageUrl + ')'">
+    </main>
+
+    <aside class="right-rail">
+        <section class="info" aria-label="Información del short">
+            <div class="title">{{ shorts.title }}</div>
+            <div class="user">{{ shorts.user }}</div>
+            <div class="desc">{{ shorts.description }}</div>
+        </section>
+    </aside>
+</div>

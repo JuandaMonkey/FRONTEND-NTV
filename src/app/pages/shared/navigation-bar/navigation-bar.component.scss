@@ -1,20 +1,26 @@
 .navbar {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 24px;
-    background-color: rgba(0,0,0,0.8);
+    flex-direction: column;
+    padding: 16px 24px;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    border-radius: 8px;
     position: sticky;
     top: 0;
     z-index: 100;
-    border-radius: 8px;
+    gap: 15px;
 }
 
-.navbar-left {
-    flex: 1;
+.navbar-top {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  gap: 10px;
 }
 
-.navbar-right {
-    display: flex;
-    gap: 12px;
+.navbar-bottom {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 10px;
 }

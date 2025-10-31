@@ -1,0 +1,22 @@
+<div class="movie-container">
+  <h2 class="container-title">{{ title }}</h2>
+
+  <div class="movies-row">
+    <div
+      class="carousel-item"
+      *ngFor="let movie of visibleMovies"
+    >
+      <app-movie-card
+        [title]="movie.title"
+        [imageUrl]="movie.imageUrl">
+      </app-movie-card>
+    </div>
+  </div>
+
+  <button
+    *ngIf="hiddenMovies.length > 0"
+    class="expand-button"
+    (click)="showMore()">
+    <i class="fa-solid fa-chevron-down"></i>
+  </button>
+</div>

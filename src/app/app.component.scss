@@ -1,35 +1,54 @@
 :host {
     display: block;
-    min-height: auto;
     position: relative;
     color: #fff;
-    font-family: Inter, system-ui, Arial;
-    overflow: hidden;
-}
+    font-family: Inter, system-ui, Arial, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    
+    --navbar-height: 80px;
+    --navbar-gap: 60px;
 
-// fondo principal
-:host::before {
+  &::before {
     content: "";
     position: fixed;
     inset: 0;
     background: url("/assets/main-background.jpg") center/cover no-repeat;
     z-index: -2;
-}
+    pointer-events: none;
+  }
 
-// capa oscura
-:host::after {
+  &::after {
     content: "";
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.55);
+    background: rgba(0, 0, 0, 0.7);
     z-index: -1;
+    pointer-events: none;
+  }
 }
 
-// filas de peliculas
-.movies-row {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 16px;
-    padding: 40px 20px;
+app-navigation-bar {
+    position: fixed;
+    top: 5px;
+    left: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+router-outlet {
+    display: block;
+    margin-top: calc(var(--navbar-height) + var(--navbar-gap));
+}
+
+.explore-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.short-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
 }

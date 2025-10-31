@@ -1,6 +1,6 @@
 .movie {
-    width: 300px;
-    height: 170px;
+    width: 269px;
+    height: 150px;
     border-radius: 8px;
     overflow: hidden;
     position: relative;
@@ -29,7 +29,7 @@
     right: 8px;
     bottom: 10px;
     z-index: 2;
-    font-size: 13px;
+    font-size: 20px;
     font-weight: 600;
     text-shadow: 0 2px 8px rgba(0,0,0,0.9);
     white-space: nowrap;
@@ -39,7 +39,7 @@
 
 @media (min-width: 900px) {
   .movie {
-    width: 360px;
-    height: 200px;
+    width: 323.6px;
+    height: 170px;
   }
 }

@@ -1,9 +1,15 @@
 <nav class="navbar">
-  <div class="navbar-left">
-    <app-search-bar (searchChange)="search($event)"></app-search-bar>
+  <div class="navbar-top">
+    <div class="navbar-search">
+      <app-search-bar (searchChange)="search($event)"></app-search-bar>
+    </div>
+    <div class="navbar-my-account">
+      <app-my-account></app-my-account>
+    </div>
   </div>
-  <div class="navbar-right">
-    <app-button label="Shorts" type="secondary" (clickBtn)="shorts()"></app-button>
-    <app-button label="Cortometrajes" type="secondary" (clickBtn)="cortos()"></app-button>
+  <div class="navbar-bottom">
+    <app-button label="Todo" type="secondary" (click)="navigateToHome()"></app-button>
+      <app-button label="Shorts" type="secondary" (click)="navigateToShorts()"></app-button>
+      <app-button label="Cortometrajes" type="secondary"></app-button>
   </div>
 </nav>

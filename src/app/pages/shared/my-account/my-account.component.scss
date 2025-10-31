@@ -1,0 +1,77 @@
+.my-account {
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    position: relative;
+    background-color: #1a1a1a;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+    transition: all 0.25s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  &:hover {
+    border-color: #bfbfbf;
+  }
+
+  i {
+    color: #bfbfbf;
+    font-size: 18px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background-color: #222;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    z-index: 10;
+    min-width: 140px;
+    animation: fadeIn 0.2s ease forwards;
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 1px 0;
+
+      li {
+        padding: 5px 15px;
+
+        a {
+          color: #bfbfbf;
+          text-decoration: none;
+          font-size: 17px;
+          font-weight: 600;
+          text-shadow: 0 2px 8px rgba(0,0,0,0.9); 
+          display: block;
+          transition: color 0.2s ease, background 0.2s ease;
+
+          &:hover {
+            color: #fff;
+            background-color: #333;
+            border-radius: 4px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

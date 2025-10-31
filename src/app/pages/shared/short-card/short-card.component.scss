@@ -1,0 +1,45 @@
+.short {
+    width: 270px;
+    height: 450px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    cursor: pointer;
+}
+
+.short:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.7);
+}
+
+.short::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%);
+}
+
+.meta {
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    bottom: 10px;
+    z-index: 2;
+    font-size: 20px;
+    font-weight: 600;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (min-width: 900px) {
+  .short {
+    width: 330px;
+    height: 490px;
+  }
+}

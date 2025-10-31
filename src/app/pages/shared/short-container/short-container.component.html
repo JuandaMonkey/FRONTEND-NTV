@@ -1,0 +1,10 @@
+<div class="short-container">
+    <h2 class="container-title">{{ title }}</h2>
+    
+    <div class="short-row">
+        <app-short-card *ngFor="let movie of movies"
+            [title]="movie.title"
+            [imageUrl]="movie.imageUrl">
+        </app-short-card>
+    </div>
+</div>

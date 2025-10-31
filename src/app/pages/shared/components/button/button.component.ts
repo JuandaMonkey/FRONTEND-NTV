@@ -11,7 +11,8 @@ import { CommonModule } from '@angular/common';
 export class ButtonComponent {
   @Input() label: string = '';
   @Input() icon: string = ''; 
-  @Input() type: 'primary' | 'secondary' | 'danger' | 'warning' = 'primary';
+  @Input() type: 'primary' | 'secondary' | 'danger' | 'warning' | 'control-up' | 'control-down' = 'primary';
+  @Input() ariaLabel: string = '';
   @Output() clickBtn = new EventEmitter<void>();
 
   click() {

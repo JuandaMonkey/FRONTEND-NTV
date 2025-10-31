@@ -1,0 +1,30 @@
+<section class="short-section">
+  <app-short-container
+    title="Shorts"
+    [movies]="shorts">
+  </app-short-container>
+</section>
+
+<section class="movies-section">
+  <app-movie-slider
+    title="Continuar viendo"
+    [movies]="movies">
+  </app-movie-slider>
+
+  <app-movie-slider
+    title="Recomendado para ti"
+    [movies]="movies">
+  </app-movie-slider>
+
+  <app-movie-slider
+    title="Más vistos"
+    [movies]="movies">
+  </app-movie-slider>
+</section>
+
+<section class="explore-section">
+  <app-movie-container
+    title="Explorar"
+    [movies]="movies">
+  </app-movie-container>
+</section>

@@ -1,0 +1,9 @@
+<div class="my-account" (click)="toggleDropdown($event)" [class.active]="isDropdownOpen">
+  <i class="fa fa-user"></i>
+
+  <div class="dropdown-menu" *ngIf="isDropdownOpen">
+    <ul>
+      <li><a (click)="logout($event)">Cerrar sesión</a></li>
+    </ul>
+  </div>
+</div>
