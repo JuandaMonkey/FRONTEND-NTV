@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 // componentes
 import { ShortContainerComponent } from '../shared/short-container/short-container.component';
@@ -17,6 +18,13 @@ import { MovieContainerComponent } from '../shared/movie-container/movie-contain
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent {
+  constructor(private router: Router) {}
+
+  navigateToShorts() {
+    this.router.navigate(['short-page']);
+    console.log('Navegando para Shorts');
+  }
+
   shorts = [
     {
       title: 'Una voz silenciosa',
