@@ -1,3 +1,7 @@
+[plugins]
+  package = "@netlify/angular-runtime"
+  enabled = false
+
 [build] 
   command = "ng build --configuration production" 
   publish = "dist/frontend-ntv" 
