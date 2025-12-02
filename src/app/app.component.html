@@ -1,12 +1,14 @@
-<!-- navigation bar -->
-<app-navigation-bar></app-navigation-bar>
+<!-- Barra de navegación -->
+<app-navbar></app-navbar>
 
-<!-- movie card -->
-<div class="movies-row">
-  <app-movie-card *ngFor="let movie of movies"
-    [title]="movie.title"
-    [imageUrl]="movie.imageUrl">
-  </app-movie-card>
-</div>
+<!-- Contenido principal -->
+<main class="main-content">
+  <router-outlet></router-outlet>
+</main>
 
-<router-outlet></router-outlet>
+<!-- Footer -->
+<footer class="footer mt-auto py-3 bg-light">
+  <div class="container text-center">
+    <span class="text-muted">© 2025 Naki's TV. Todos los derechos reservados.</span>
+  </div>
+</footer>

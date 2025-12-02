@@ -1,1 +1,43 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/scss/bootstrap';
+
+body {
+  background-color: #f5f7fb;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+.card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.btn-primary {
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+.form-control {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #e1e5ee;
+  transition: all 0.3s ease;
+  
+  &:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading {
+  animation: spin 1s linear infinite;
+}

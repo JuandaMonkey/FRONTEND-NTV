@@ -1,0 +1,89 @@
+<div class="login-wrapper">
+  <div class="login-container">
+    <div class="login-left">
+      <div class="login-header">
+        <h1>Iniciar Sesión</h1>
+        <p>Ingresa tus credenciales para continuar</p>
+      </div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+        <!-- Mensaje de error general -->
+        <div *ngIf="error" class="alert alert-error">
+          <i class="fas fa-exclamation-circle"></i>
+          {{ error }}
+        </div>
+
+        <!-- Campo de correo -->
+        <div class="form-group">
+          <label>Correo electrónico</label>
+          <div class="input-group">
+            <i class="fas fa-envelope"></i>
+            <input 
+              type="email" 
+              formControlName="correo"
+              [class.error]="f['correo'].invalid && f['correo'].touched"
+              placeholder="tucorreo@ejemplo.com">
+          </div>
+          <div *ngIf="f['correo'].invalid && f['correo'].touched" class="error-msg">
+            <i class="fas fa-exclamation-circle"></i>
+            <span *ngIf="f['correo'].errors?.['required']">El correo es requerido</span>
+            <span *ngIf="f['correo'].errors?.['email']">Ingresa un correo válido</span>
+          </div>
+        </div>
+
+        <!-- Campo de contraseña -->
+        <div class="form-group">
+          <div class="form-opt">
+            <label>Contraseña</label>
+            <a href="#" class="forgot">¿Olvidaste tu contraseña?</a>
+          </div>
+          <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input 
+              type="password" 
+              formControlName="contrasena"
+              [class.error]="f['contrasena'].invalid && f['contrasena'].touched"
+              placeholder="••••••••">
+          </div>
+          <div *ngIf="f['contrasena'].invalid && f['contrasena'].touched" class="error-msg">
+            <i class="fas fa-exclamation-circle"></i>
+            <span>La contraseña es requerida</span>
+          </div>
+        </div>
+
+        <!-- Recordar sesión -->
+        <div class="form-opt">
+          <label class="remember">
+            <input type="checkbox" id="remember">
+            Recordar mi sesión
+          </label>
+        </div>
+
+        <!-- Botón de inicio de sesión -->
+        <button 
+          type="submit" 
+          class="btn"
+          [disabled]="loading || loginForm.invalid">
+          <span *ngIf="!loading">Iniciar Sesión</span>
+          <span *ngIf="loading" class="spinner"></span>
+        </button>
+
+        <!-- Enlace a registro -->
+        <div class="register-link">
+          ¿No tienes una cuenta? <a [routerLink]="['/register']">Regístrate</a>
+        </div>
+      </form>
+    </div>
+
+    <!-- Lado derecho con imagen -->
+    <div class="login-right">
+      <div class="login-hero">
+        <div class="logo">
+          <i class="fas fa-lock" style="font-size: 2rem; color: white;"></i>
+        </div>
+        <h2>Seguridad Primero</h2>
+        <p>Protege tus datos con nuestro sistema de encriptación avanzado y mantén tu información segura en todo momento.</p>
+      </div>
+    </div>
+  </div>
+</div>

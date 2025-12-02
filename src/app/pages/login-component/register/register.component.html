@@ -1,0 +1,138 @@
+<div class="auth-container">
+  <div class="auth-box">
+    <div class="auth-left">
+      <div class="auth-header">
+        <h2>Crear Cuenta</h2>
+        <p>Completa el formulario para registrarte</p>
+      </div>
+
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="auth-form">
+        <!-- Mensajes de estado -->
+        <div *ngIf="error" class="alert alert-error">
+          <i class="fas fa-exclamation-circle"></i>
+          {{ error }}
+        </div>
+
+        <div *ngIf="success" class="alert alert-success">
+          <i class="fas fa-check-circle"></i>
+          {{ success }}
+        </div>
+
+        <!-- Campo de nombre -->
+        <div class="form-group">
+          <label>Nombre completo</label>
+          <div class="input-group">
+            <i class="fas fa-user"></i>
+            <input 
+              type="text" 
+              formControlName="nombre"
+              [class.error]="f['nombre'].invalid && f['nombre'].touched"
+              placeholder="Tu nombre completo">
+          </div>
+          <div *ngIf="f['nombre'].invalid && f['nombre'].touched" class="error-msg">
+            <i class="fas fa-exclamation-circle"></i>
+            <span>El nombre es requerido (mínimo 3 caracteres)</span>
+          </div>
+        </div>
+
+        <!-- Campo de correo -->
+        <div class="form-group">
+          <label>Correo electrónico</label>
+          <div class="input-group">
+            <i class="fas fa-envelope"></i>
+            <input 
+              type="email" 
+              formControlName="correo"
+              [class.error]="f['correo'].invalid && f['correo'].touched"
+              placeholder="tucorreo@ejemplo.com">
+          </div>
+          <div *ngIf="f['correo'].invalid && f['correo'].touched" class="error-msg">
+            <i class="fas fa-exclamation-circle"></i>
+            <span *ngIf="f['correo'].errors?.['required']">El correo es requerido</span>
+            <span *ngIf="f['correo'].errors?.['email']">Ingresa un correo válido</span>
+          </div>
+        </div>
+
+        <!-- Campo de contraseña -->
+        <div class="form-group">
+          <label>Contraseña</label>
+          <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input 
+              type="password" 
+              formControlName="contrasena"
+              [class.error]="f['contrasena'].invalid && f['contrasena'].touched"
+              placeholder="••••••••">
+          </div>
+          <div *ngIf="f['contrasena'].invalid && f['contrasena'].touched" class="error-msg">
+            <i class="fas fa-exclamation-circle"></i>
+            <span>La contraseña debe tener al menos 6 caracteres</span>
+          </div>
+        </div>
+
+        <!-- Confirmar contraseña -->
+        <div class="form-group">
+          <label>Confirmar Contraseña</label>
+          <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input 
+              type="password" 
+              formControlName="confirmarContrasena"
+              [class.error]="(f['confirmarContrasena'].invalid || registerForm.hasError('notSame')) && f['confirmarContrasena'].touched"
+              placeholder="••••••••">
+          </div>
+          <div *ngIf="f['confirmarContrasena'].invalid && f['confirmarContrasena'].touched" class="error-msg">
+            <i class="fas fa-exclamation-circle"></i>
+            <span>Por favor confirma tu contraseña</span>
+          </div>
+          <div *ngIf="registerForm.hasError('notSame') && f['confirmarContrasena'].touched" class="error-msg">
+            <i class="fas fa-exclamation-circle"></i>
+            <span>Las contraseñas no coinciden</span>
+          </div>
+        </div>
+
+        <!-- Términos y condiciones -->
+        <div class="form-opt">
+          <label class="remember">
+            <input 
+              type="checkbox" 
+              id="terminos"
+              formControlName="terminos"
+              [class.error]="f['terminos'].invalid && f['terminos'].touched">
+            Acepto los <a href="#" class="forgot">Términos y Condiciones</a>
+          </label>
+        </div>
+        <div *ngIf="f['terminos'].invalid && f['terminos'].touched" class="error-msg">
+          <i class="fas fa-exclamation-circle"></i>
+          <span>Debes aceptar los términos y condiciones</span>
+        </div>
+
+        <!-- Botón de registro -->
+        <button 
+          type="submit" 
+          class="btn"
+          [class.loading]="loading"
+          [disabled]="loading || registerForm.invalid">
+          <span *ngIf="!loading">Crear Cuenta</span>
+          <span *ngIf="loading" class="spinner"></span>
+        </button>
+
+        <!-- Enlace a login -->
+        <div class="register-link">
+          ¿Ya tienes una cuenta? <a [routerLink]="['/login']">Inicia Sesión</a>
+        </div>
+      </form>
+    </div>
+
+    <!-- Lado derecho con imagen -->
+    <div class="auth-right">
+      <div class="auth-hero">
+        <div class="logo">
+          <i class="fas fa-user-plus"></i>
+        </div>
+        <h2>Únete a nosotros</h2>
+        <p>Crea una cuenta para acceder a todas las funcionalidades y mantener tus datos seguros.</p>
+      </div>
+    </div>
+  </div>
+</div>

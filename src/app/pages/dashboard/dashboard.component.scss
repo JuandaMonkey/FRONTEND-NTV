@@ -1,0 +1,58 @@
+.dashboard-container {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+
+  .card {
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08) !important;
+    }
+    
+    .card-body {
+      padding: 3rem 2rem;
+      
+      @media (min-width: 768px) {
+        padding: 4rem 3rem;
+      }
+    }
+  }
+  
+  .bi-person-circle {
+    color: #0d6efd;
+    background: rgba(13, 110, 253, 0.1);
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  h1 {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+  
+  .lead {
+    font-size: 1.25rem;
+    color: #6c757d;
+  }
+  
+  .badge {
+    font-size: 0.9rem;
+    padding: 0.5em 1em;
+    border-radius: 50rem;
+    text-transform: capitalize;
+  }
+  
+  .text-muted {
+    color: #6c757d !important;
+  }
+}

@@ -1,0 +1,98 @@
+<div class="decrypt-container">
+  <div class="card shadow-lg">
+    <div class="card-header bg-primary text-white">
+      <h2 class="h4 mb-0">Desencriptador RSA</h2>
+      <p class="mb-0 small">Desencripta tu texto de forma segura</p>
+    </div>
+    
+    <div class="card-body">
+      <!-- Formulario de desencriptación -->
+      <div>
+        <div class="mb-4">
+          <label for="textToDecrypt" class="form-label">Texto encriptado</label>
+          <textarea 
+            id="textToDecrypt" 
+            class="form-control" 
+            [(ngModel)]="textToDecrypt" 
+            rows="4" 
+            placeholder="Pega aquí el texto encriptado..."
+          ></textarea>
+        </div>
+
+        <div class="mb-4">
+          <label for="privateKey" class="form-label">Clave privada</label>
+          <div class="input-group">
+            <input 
+              [type]="showPrivateKey ? 'text' : 'password'" 
+              id="privateKey"
+              class="form-control"
+              [(ngModel)]="privateKey"
+              placeholder="Ingresa tu clave privada"
+            >
+            <button 
+              class="btn btn-outline-secondary" 
+              type="button"
+              (click)="togglePrivateKeyVisibility()"
+              [title]="showPrivateKey ? 'Ocultar clave' : 'Mostrar clave'"
+            >
+              <i class="bi" [class.bi-eye]="!showPrivateKey" [class.bi-eye-slash]="showPrivateKey"></i>
+            </button>
+          </div>
+          <small class="text-muted">Nunca compartas tu clave privada</small>
+        </div>
+
+        <!-- Mensajes de error -->
+        <div *ngIf="error" class="alert alert-danger">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>
+          {{ error }}
+        </div>
+
+        <!-- Resultado de la desencriptación -->
+        <div class="mb-4" *ngIf="decryptedText">
+          <label class="form-label">Texto desencriptado</label>
+          <div class="card bg-light">
+            <div class="card-body">
+              <pre class="mb-0">{{ decryptedText }}</pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Acciones -->
+        <div class="d-flex gap-2">
+          <button 
+            class="btn btn-primary"
+            (click)="decryptText()"
+            [disabled]="!textToDecrypt || !privateKey"
+          >
+            <i class="bi bi-unlock-fill me-2"></i>
+            Desencriptar
+          </button>
+          
+          <button 
+            class="btn btn-outline-secondary"
+            (click)="clear()"
+            [disabled]="!textToDecrypt && !decryptedText"
+          >
+            <i class="bi bi-eraser me-2"></i>
+            Limpiar
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card-footer bg-light">
+      <div class="d-flex justify-content-between align-items-center">
+        <small class="text-muted">
+          <i class="bi bi-shield-lock me-1"></i>
+          Conexión segura
+        </small>
+        <a 
+          href="/security/encrypt" 
+          class="btn btn-sm btn-outline-primary"
+        >
+          <i class="bi bi-arrow-left me-1"></i> Volver a Encriptar
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

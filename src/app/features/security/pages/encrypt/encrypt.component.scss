@@ -1,0 +1,76 @@
+.encrypt-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  
+  .card {
+    border: none;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    
+    &-header {
+      border-bottom: none;
+      padding: 1.5rem;
+      
+      h2 {
+        font-weight: 600;
+      }
+      
+      p {
+        opacity: 0.9;
+      }
+    }
+    
+    &-body {
+      padding: 2rem;
+      
+      @media (max-width: 768px) {
+        padding: 1.5rem;
+      }
+    }
+    
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+      font-family: 'Courier New', monospace;
+      
+      &[readonly] {
+        background-color: #f8f9fa;
+        cursor: not-allowed;
+      }
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      
+      i {
+        font-size: 1.1em;
+      }
+    }
+  }
+  
+  .alert {
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    align-items: center;
+    
+    i {
+      font-size: 1.25em;
+      margin-right: 0.5rem;
+    }
+  }
+  
+  .input-group-text {
+    background-color: #f8f9fa;
+  }
+  
+  .text-muted {
+    font-size: 0.875rem;
+  }
+}

@@ -1,0 +1,68 @@
+<div class="dashboard-container">
+  <div class="container py-5">
+    <!-- Tarjeta de bienvenida -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-12">
+        <div class="card shadow-sm mb-4">
+          <div class="card-body p-4">
+            <div class="d-flex align-items-center">
+              <i class="bi bi-person-circle display-4 text-primary me-4"></i>
+              <div>
+                <h1 class="h3 mb-1">¡Bienvenido, {{ user?.nombre || 'Usuario' }}!</h1>
+                <p class="text-muted mb-0">Has iniciado sesión correctamente en Naki's TV</p>
+              </div>
+            </div>
+            
+            <div class="mt-4 row">
+              <div class="col-md-6">
+                <p class="mb-2"><i class="bi bi-envelope me-2"></i> <strong>Correo:</strong> {{ user?.correo || 'No disponible' }}</p>
+              </div>
+              <div class="col-md-6">
+                <p class="mb-2"><i class="bi bi-shield-lock me-2"></i> <strong>Rol:</strong> <span class="badge bg-primary">{{ user?.rol || 'Usuario' }}</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tarjetas de funcionalidades -->
+    <div class="row g-4">
+      <!-- Tarjeta de Encriptación -->
+      <div class="col-md-6">
+        <div class="card h-100 border-0 shadow-sm hover-shadow transition-all">
+          <div class="card-body p-4">
+            <div class="d-flex align-items-center mb-3">
+              <div class="icon-circle bg-primary bg-opacity-10 text-primary me-3">
+                <i class="bi bi-lock-fill"></i>
+              </div>
+              <h3 class="h5 mb-0">Encriptación RSA</h3>
+            </div>
+            <p class="text-muted mb-4">Protege tu información sensible utilizando nuestro sistema de encriptación RSA de grado militar.</p>
+            <a [routerLink]="['/security/encrypt']" class="btn btn-primary w-100">
+              <i class="bi bi-arrow-right-circle me-2"></i> Ir a Encriptar
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta de Desencriptación -->
+      <div class="col-md-6">
+        <div class="card h-100 border-0 shadow-sm hover-shadow transition-all">
+          <div class="card-body p-4">
+            <div class="d-flex align-items-center mb-3">
+              <div class="icon-circle bg-success bg-opacity-10 text-success me-3">
+                <i class="bi bi-unlock-fill"></i>
+              </div>
+              <h3 class="h5 mb-0">Desencriptación RSA</h3>
+            </div>
+            <p class="text-muted mb-4">Accede a tu información previamente encriptada de manera segura con tu clave privada.</p>
+            <a [routerLink]="['/security/decrypt']" class="btn btn-success w-100">
+              <i class="bi bi-key-fill me-2"></i> Ir a Desencriptar
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
