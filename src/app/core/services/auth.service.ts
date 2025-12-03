@@ -20,8 +20,8 @@ export interface ErrorResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  private clienteUrl = 'https://localhost:7153/api/Cliente';
-  private authUrl = 'https://localhost:7153/api/Auth';
+  private clienteUrl = 'https://nakistv-web-service.onrender.com/api/Cliente';
+  private authUrl = 'https://nakistv-web-service.onrender.com/api/Auth';
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
   public errorMessage: string = '';

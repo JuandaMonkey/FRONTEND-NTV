@@ -1,12 +1,12 @@
-<div class="auth-container">
-  <div class="auth-box">
-    <div class="auth-left">
-      <div class="auth-header">
-        <h2>Crear Cuenta</h2>
+<div class="login-wrapper">
+  <div class="login-container">
+    <div class="login-left">
+      <div class="login-header">
+        <h1>Crear Cuenta</h1>
         <p>Completa el formulario para registrarte</p>
       </div>
 
-      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="auth-form">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="login-form">
         <!-- Mensajes de estado -->
         <div *ngIf="error" class="alert alert-error">
           <i class="fas fa-exclamation-circle"></i>
@@ -125,13 +125,13 @@
     </div>
 
     <!-- Lado derecho con imagen -->
-    <div class="auth-right">
-      <div class="auth-hero">
+    <div class="login-right">
+      <div class="login-hero">
         <div class="logo">
           <i class="fas fa-user-plus"></i>
         </div>
-        <h2>Únete a nosotros</h2>
-        <p>Crea una cuenta para acceder a todas las funcionalidades y mantener tus datos seguros.</p>
+        <h2>¡Bienvenido a NakiTV!</h2>
+        <p>Crea tu cuenta para acceder a todos nuestros servicios y contenido exclusivo.</p>
       </div>
     </div>
   </div>
