@@ -74,7 +74,12 @@ export class AuthService {
       } else if (event instanceof NavigationEnd) {
         this.navigationInProgress = false;
         
-        if (!this.isAuthenticated() && !event.url.startsWith('/login')) {
+        // Lista de rutas públicas
+        const publicRoutes = ['/login', '/register', '/auth/register', '/auth/login', '/'];
+        const isPublicRoute = publicRoutes.some(route => event.url.startsWith(route));
+        
+        // Solo limpiar la sesión si no es una ruta pública
+        if (!this.isAuthenticated() && !isPublicRoute) {
           this.clearSession();
         }
       }
