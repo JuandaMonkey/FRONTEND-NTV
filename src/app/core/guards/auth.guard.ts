@@ -2,25 +2,47 @@ import { inject } from '@angular/core';
 import { CanActivateFn, Router, UrlTree } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
+// Rutas públicas (accesibles sin autenticación)
+const PUBLIC_ROUTES = ['/login', '/register'];
+
 export const authGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthService);
   const router = inject(Router);
+  
+  const currentUrl = state.url.split('?')[0];
+  const isPublicRoute = PUBLIC_ROUTES.some(route => 
+    currentUrl === route || currentUrl.startsWith(`${route}/`)
+  );
+  const isAuthenticated = authService.isAuthenticated();
+  
+  console.log('AuthGuard:', { 
+    currentUrl, 
+    isPublicRoute, 
+    isAuthenticated,
+    publicRoutes: PUBLIC_ROUTES
+  });
 
-  // Permitir acceso a rutas de autenticación
-  if (state.url.includes('/login') || state.url.includes('/register')) {
-    // Si el usuario ya está autenticado, redirigir al dashboard
-    if (authService.isAuthenticated()) {
-      return router.parseUrl('/dashboard');
+  // 1. Si es una ruta pública
+  if (isPublicRoute) {
+    // Si el usuario YA está autenticado, redirigir al dashboard
+    if (isAuthenticated) {
+      console.log('Redirigiendo a dashboard desde ruta pública');
+      return router.createUrlTree(['/dashboard']);
     }
+    // Si NO está autenticado, permitir acceso
+    console.log('Permitiendo acceso a ruta pública');
     return true;
   }
-
-  // Para otras rutas, verificar autenticación
-  if (authService.isAuthenticated()) {
-    return true;
+  
+  // 2. Si no es una ruta pública
+  // Si el usuario NO está autenticado, redirigir al login
+  if (!isAuthenticated) {
+    console.log('Redirigiendo a login desde ruta protegida');
+    authService.redirectUrl = currentUrl;
+    return router.createUrlTree(['/login']);
   }
-
-  // Guardar la URL a la que intentó acceder
-  authService.redirectUrl = state.url;
-  return router.parseUrl('/login');
+  
+  // 3. Usuario autenticado intentando acceder a una ruta protegida
+  console.log('Permitiendo acceso a ruta protegida');
+  return true;
 };

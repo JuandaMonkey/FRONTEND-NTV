@@ -73,15 +73,6 @@ export class AuthService {
         this.navigationInProgress = true;
       } else if (event instanceof NavigationEnd) {
         this.navigationInProgress = false;
-        
-        // Lista de rutas públicas
-        const publicRoutes = ['/login', '/register', '/auth/register', '/auth/login', '/'];
-        const isPublicRoute = publicRoutes.some(route => event.url.startsWith(route));
-        
-        // Solo limpiar la sesión si no es una ruta pública
-        if (!this.isAuthenticated() && !isPublicRoute) {
-          this.clearSession();
-        }
       }
     });
   }
@@ -186,8 +177,29 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    const currentUser = this.currentUserValue;
-    return !!(currentUser && currentUser.token && this.isTokenValid(currentUser.token));
+    // Verificar primero en el Subject actual (estado en memoria)
+    if (this.currentUserValue?.token && this.isTokenValid(this.currentUserValue.token)) {
+      return true;
+    }
+
+    // Si no hay en memoria, verificar en sessionStorage
+    const sessionData = sessionStorage.getItem(this.SESSION_KEY);
+    if (sessionData) {
+      try {
+        const user = JSON.parse(sessionData);
+        if (user?.token && this.isTokenValid(user.token)) {
+          // Sincronizar con el Subject
+          this.currentUserSubject.next(user);
+          return true;
+        }
+      } catch (e) {
+        console.error('Error al verificar la sesión:', e);
+      }
+    }
+    
+    // Si llegamos aquí, no hay sesión válida
+    this.clearSession();
+    return false;
   }
 
   getErrorMessage(): string {

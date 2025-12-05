@@ -10,7 +10,7 @@ export const routes: Routes = [
   // Ruta por defecto
   { 
     path: '', 
-    redirectTo: 'dashboard', 
+    redirectTo: 'login',
     pathMatch: 'full' 
   },
   
@@ -18,12 +18,12 @@ export const routes: Routes = [
   { 
     path: 'login', 
     component: LoginComponent,
-    canActivate: [() => !localStorage.getItem('currentUser') ? true : false]
+    canActivate: [authGuard]
   },
   { 
     path: 'register', 
     component: RegisterComponent,
-    canActivate: [() => !localStorage.getItem('currentUser') ? true : false]
+    canActivate: [authGuard]
   },
   
   // Ruta del dashboard (protegida)
@@ -33,34 +33,9 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
   
-  // Rutas de seguridad (protegidas)
-  {
-    path: 'security',
-    children: [
-      {
-        path: 'encrypt',
-        component: EncryptComponent,
-        canActivate: [authGuard],
-        data: { title: 'Encriptar' }
-      },
-      {
-        path: 'decrypt',
-        component: DecryptComponent,
-        canActivate: [authGuard],
-        data: { title: 'Desencriptar' }
-      },
-      {
-        path: '',
-        redirectTo: 'encrypt',
-        pathMatch: 'full'
-      }
-    ]
-  },
-  
-  // Redirigir rutas desconocidas al dashboard si está autenticado, de lo contrario al login
+  // Redirigir rutas desconocidas al login
   { 
     path: '**', 
-    redirectTo: 'dashboard',
-    pathMatch: 'full'
+    redirectTo: 'login'
   }
 ];
